@@ -11,6 +11,10 @@ public class ReturnTypeDto {
     this.data = data;
   }
 
+  public ReturnTypeDto(Boolean status){
+    this.status = status;
+  }
+
   public ReturnTypeDto(Boolean status, UserEntity data){
     this.status = status;
     this.data = data;
