@@ -45,9 +45,7 @@ public class UserService implements UserInterface {
 
   @Transactional
   @Override
-  public ReturnTypeDto deleteUser(String _id) {
-    Long id = (long) Integer.parseInt(_id);
-    log.info("id"+id);
+  public ReturnTypeDto deleteUser(Long id) {
     UserEntity foundUser = this.findById(id);
     if (foundUser == null ) return new ReturnTypeDto(false);
     log.info("DELETING USER...");
