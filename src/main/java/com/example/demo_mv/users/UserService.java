@@ -1,13 +1,15 @@
 package com.example.demo_mv.users;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
+import com.example.demo_mv.dto.ReturnTypeDto;
 import com.example.demo_mv.users.interfaces.UserInterface;
-
 import jakarta.annotation.Resource;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class UserService implements UserInterface {
   
@@ -25,19 +27,26 @@ public class UserService implements UserInterface {
   }
 
   @Override
-  public UserEntity saveUser(UserEntity user) {
-    return _userRepository.save(user);
+  public UserEntity findByMail(String mail) {
+    return _userRepository.findByMail(mail);
   }
 
+  @Transactional
+  @Override
+  public ReturnTypeDto saveUser(UserEntity user) {
+    log.info("Looking for user...");
+    UserEntity foundUser = this.findByMail(user.email);
+    System.out.println("Result:: "+foundUser);
+    if (foundUser != null ) return new ReturnTypeDto(true, foundUser);
+    log.info("Saving user...");
+    UserEntity result = _userRepository.save(user);
+    return new ReturnTypeDto(false, result);
+  }
+
+  @Transactional
   @Override
   public void delete(UserEntity user) {
-    try {
-      _userRepository.delete(user);
-    } catch (Exception e) {
-      System.out.println("ERROR:: " + e);
-      // return false;
-    }
-    // return true; 
+    _userRepository.delete(user);
   }
 
 }
