@@ -11,5 +11,5 @@ public interface UserInterface {
   public UserEntity findById(Long id);
   public UserEntity findByMail(String mail);
   public ReturnTypeDto saveUser(UserEntity user);
-  public void delete(UserEntity user);
+  public ReturnTypeDto deleteUser(String id);
 }
