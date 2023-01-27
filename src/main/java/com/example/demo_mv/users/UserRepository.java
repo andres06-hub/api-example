@@ -1,0 +1,5 @@
+package com.example.demo_mv.users;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<UserEntity, Long> {}
