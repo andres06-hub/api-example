@@ -1,4 +1,4 @@
-package com.example.demo_mv.users.dto;
+package com.example.demo_mv.common.dto;
 
 import lombok.Data;
 

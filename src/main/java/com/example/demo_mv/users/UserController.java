@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo_mv.users.dto.ResponseDto;
+import com.example.demo_mv.common.dto.ResponseDto;
 import com.example.demo_mv.users.dto.ReturnTypeDto;
 
 import jakarta.annotation.Resource;
