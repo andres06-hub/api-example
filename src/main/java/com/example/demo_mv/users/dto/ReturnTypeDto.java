@@ -1,4 +1,4 @@
-package com.example.demo_mv.dto;
+package com.example.demo_mv.users.dto;
 
 import com.example.demo_mv.users.UserEntity;
 

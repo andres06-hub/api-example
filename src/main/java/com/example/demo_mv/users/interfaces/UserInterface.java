@@ -2,8 +2,8 @@ package com.example.demo_mv.users.interfaces;
 
 import java.util.List;
 
-import com.example.demo_mv.dto.ReturnTypeDto;
 import com.example.demo_mv.users.UserEntity;
+import com.example.demo_mv.users.dto.ReturnTypeDto;
 
 public interface UserInterface {
   

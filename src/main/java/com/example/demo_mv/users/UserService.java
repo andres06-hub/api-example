@@ -3,7 +3,7 @@ package com.example.demo_mv.users;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import com.example.demo_mv.dto.ReturnTypeDto;
+import com.example.demo_mv.users.dto.ReturnTypeDto;
 import com.example.demo_mv.users.interfaces.UserInterface;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
