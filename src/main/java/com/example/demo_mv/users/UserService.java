@@ -3,8 +3,11 @@ package com.example.demo_mv.users;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+import com.example.demo_mv.common.services.BcryptService;
 import com.example.demo_mv.users.dto.ReturnTypeDto;
 import com.example.demo_mv.users.interfaces.UserInterface;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +16,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class UserService implements UserInterface {
   
+  private BcryptService bct;
+
+  public UserService(){
+    bct = new BcryptService();
+  }
+
   @Resource
   UserRepository _userRepository;
 
@@ -36,9 +45,10 @@ public class UserService implements UserInterface {
   public ReturnTypeDto saveUser(UserEntity user) {
     log.info("Looking for user...");
     UserEntity foundUser = this.findByMail(user.email);
-    System.out.println("Result:: "+foundUser);
     if (foundUser != null ) return new ReturnTypeDto(true, foundUser);
     log.info("Saving user...");
+    String pwdHash = this.bct.BcryptData(user.password);
+    user.setPassword(pwdHash);
     UserEntity result = _userRepository.save(user);
     return new ReturnTypeDto(false, result);
   }
